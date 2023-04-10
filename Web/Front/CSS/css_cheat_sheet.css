@@ -1,0 +1,24 @@
+/* selectores */
+h1{
+    /*Atributos*/
+    color: rgb(255, 0, 0);
+    font-family: Verdana, Geneva, Tahoma, sans-serif; /*Valores*/
+}
+
+h2{
+    color: rgb(0, 0, 255);
+}
+
+#second_h1{
+    color:aqua;
+}
+
+.container{ /*formato con . para clases*/
+    border: 1px black solid;
+    margin: 10px;
+    padding: 10px;
+}
+
+body{
+    margin: 0;
+}
