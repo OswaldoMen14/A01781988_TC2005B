@@ -6,17 +6,138 @@ h1{
 }
 
 h2{
-    color: rgb(0, 0, 255);
+    color: hsl(240, 100%, 50%);
 }
 
-#second_h1{
-    color:aqua;
+#property_one{
+    color: blue;
 }
 
-.container{ /*formato con . para clases*/
-    border: 1px black solid;
+#aEx{ /*formato con . para clases y # para IDs*/
+    border: 3px black dotted;
     margin: 10px;
     padding: 10px;
+}
+
+#bEx{
+    border-bottom: 1px solid black;
+    border-top: 2px dotted gray;
+    border-left: 3px dashed brown;
+    border-right: 4px double black;
+    margin: 10px;
+    padding: 10px;
+}
+
+#cEx{
+    border: 5px black solid;
+    border-radius: 30px;
+    margin: 10px;
+    padding: 10px;
+}
+
+#dEx{
+    border: 5px black solid;
+    border-radius: 30px;
+    margin: 10px;
+    padding: 10px;
+    background-image: url("../images/thedarkknightrises.jpg");
+    color: white;
+}
+
+#eEx{
+    border: 5px black solid;
+    border-radius: 30px;
+    margin: 10px;
+    padding: 10px;
+    color: orangered;
+}
+
+#fEx{
+    border: 5px black solid;
+    border-radius: 30px;
+    margin: 10px;
+    padding: 10px;
+    font: 20px Arial, sans-serif;
+}
+
+#gEx{
+    border: 5px black solid;
+    border-radius: 30px;
+    margin: 10px;
+    padding: 10px;  
+    font-family: cursive;
+}
+
+#hEx{
+    border: 5px black solid;
+    border-radius: 30px;
+    margin: 10px;
+    padding: 10px;   
+    font-style: italic;
+    font-weight: lighter;
+}
+
+#iEx{
+    border: 5px black solid;
+    border-radius: 30px;
+    margin: 10px;
+    padding: 10px; 
+    width: 150px; 
+    height: 350px;
+}
+
+#jEx{
+    border: 5px black solid;
+    border-radius: 30px;
+    margin: 10px;
+    padding: 10px;  
+}
+#jEx #list_one{
+    list-style: square inside;
+}
+
+#kEx{
+    border: 5px black solid;
+    border-radius: 30px;
+    margin: 20px;
+    padding: 10px;  
+}
+
+#lEx{
+    border: 5px orange solid;
+    border-radius: 30px;
+    margin: 10px;
+    padding: 20px;   
+}
+
+#mEx{
+    border: 5px black solid;
+    border-radius: 30px;
+    margin: 10px;
+    padding: 10px; 
+    overflow: scroll;
+}
+
+#nEx{
+    border: 5px black solid;
+    border-radius: 30px;
+    margin: 10px;
+    padding: 10px;
+    display: block;
+}
+
+#oEx{
+    border: 5px black solid;
+    border-radius: 30px;
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+    top: 5px; right: 10px;
+}
+
+#pEx{
+    filter: blur(0.5px);
+    filter: contrast(120%);
 }
 
 body{
