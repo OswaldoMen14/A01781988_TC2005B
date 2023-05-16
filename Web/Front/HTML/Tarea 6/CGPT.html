@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="../../JS/DOM.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    <h1> Eventos y DOM y ChatGPT - A01781988 </h1>
+    <h3>Instrucciones</h3>
+    <p>
+        Utiliza ChatGPT y github Copilot para resolver la siguiente actividad. Antes de hacer los ejercicios, contesta las siguientes preguntas. Pregúntale a ChatGPT las preguntas, y verifica que lo que haya generado es correcto. Cuando sea necesario, agrega un ejemplo de código. Incluye una fuente que valide o invalide lo que generó. Agrega elementos de HTML con tus respuestas. (Protip: usa ChatGPT para que las respuestas las ponga directamente en elementos de html.)
+
+    Terminando las preguntas y los ejercicios, documenta tu experiencia con las herramientas en la sección de conclusiones.
+    </p>
+    </div>
+
+    <div>
+        <h3>Preguntas</h3>
+        <h4>¿Qué es el DOM?</h4>
+        <p>El DOM (Document Object Model) es una representación en memoria de un documento HTML que permite al programador acceder y manipular los elementos de una página web a través de código JavaScript.</p>
+        <p>Fuente: <a href="https://developer.mozilla.org/es/docs/Web/API/Document_Object_Model/Introduction">Mozilla Developer Network</a></p>
+
+        <h4>¿Qué es un nodo?</h4>
+        <p>En el DOM, un nodo es un elemento de un documento HTML que puede ser manipulado mediante código JavaScript. Cada nodo representa una parte del documento, como un elemento, un atributo o un fragmento de texto.</p>
+        <p>Fuente: <a href="https://developer.mozilla.org/es/docs/Web/API/Node">Mozilla Developer Network</a></p>
+
+        <h4>¿Cómo se accede a un elemento del DOM?</h4>
+        <p>Existen varias formas de acceder a un elemento del DOM mediante código JavaScript, algunas de ellas son:</p>
+        <ul>
+        <li>Utilizando el método <code>getElementById()</code>, que busca un elemento por su atributo <code>id</code>.</li>
+        <li>Utilizando el método <code>getElementsByClassName()</code>, que busca elementos por su atributo <code>class</code>.</li>
+        <li>Utilizando el método <code>getElementsByTagName()</code>, que busca elementos por su etiqueta HTML.</li>
+        <li>Utilizando el método <code>querySelector()</code>, que busca un elemento utilizando selectores CSS.</li>
+        </ul>
+        <p>Fuente: <a href="https://developer.mozilla.org/es/docs/Web/API/Document_Object_Model/Introduction#Trabajando_con_el_DOM">Mozilla Developer Network</a></p>
+
+        <h4>¿Cómo se modifica un elemento del DOM?</h4>
+        <p>Para modificar un elemento del DOM mediante código JavaScript, se puede utilizar el método <code>setAttribute()</code> para cambiar un atributo del elemento, o los métodos <code>innerHTML</code> y <code>textContent</code> para modificar el contenido del elemento.</p>
+        <p>Por ejemplo, para cambiar el valor del atributo <code>src</code> de una imagen:</p>
+        <pre><code>let img = document.getElementById("mi-imagen");
+        img.setAttribute("src", "nuevo-valor.jpg");
+        </code></pre>
+        <p>O para modificar el contenido de un elemento:</p>
+        <pre><code>let parrafo = document.getElementById("mi-parrafo");
+        parrafo.textContent = "Este es el nuevo contenido del párrafo.";
+        </code></pre>
+        <p>Fuente: <a href="https://developer.mozilla.org/es/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents#Modificar_el_contenido_de_los_elementos">Mozilla Developer Network</a></p>
+
+        <h4>¿Cuál es la diferencia entre getElementby* y querySelector*?</h4>
+        <p>La diferencia principal entre los métodos que empiezan con <code>getElementBy</code> y los que empiezan con <code>querySelector</code> es que los primeros sólo pueden buscar elementos por su nombre de etiqueta, id o nombre de clase, mientras que los segundos pueden buscar cualquier elemento utilizando selectores CSS.</p>
+        <p>Por ejemplo, si tenemos el siguiente HTML:</p>
+        <pre><code>&lt;ul id="mi-lista"&gt;
+        &lt;li class="item"&gt;Item 1&lt;/li&gt;
+        &lt;li class="item"&gt;Item 2&lt;/li&gt;
+        &lt;li class="item"&gt;Item 3&lt;/li&gt;
+        &lt;/ul&gt;
+        </code></pre>
+        <p>Para acceder al segundo elemento de la lista, podemos usar:</p>
+        <pre><code>// Usando getElementBy*
+        let lista = document.getElementById("mi-lista");
+        let elemento = lista.getElementsByTagName("li")[1];
+
+        // Usando querySelector*
+        let elemento = document.querySelector("#mi-lista .item:nth-of-type(2)");
+        </code></pre>
+        <p>Fuente: <a href="https://developer.mozilla.org/es/docs/Web/API/Document_Object_Model/Introduction#Trabajando_con_el_DOM">Mozilla Developer Network</a></p>
+
+        <h4>¿Qué es un evento?</h4>
+        <p>En programación web, un evento es cualquier acción que se produce en una página web, como hacer clic en un botón, mover el ratón o pulsar una tecla. Los eventos son utilizados para crear páginas interactivas que respondan a la interacción del usuario.</p>
+        <p>En JavaScript, se pueden detectar y manejar eventos utilizando el DOM (Modelo de Objetos del Documento). Para hacerlo, se utiliza el método <code>addEventListener()</code>, que permite asignar una función a un evento específico. Por ejemplo, para detectar cuando se hace clic en un botón:</p>
+        <pre><code>let boton = document.getElementById("mi-boton");
+        boton.addEventListener("click", function() {
+        console.log("Se ha hecho clic en el botón.");
+        });
+        </code></pre>
+        <p>Existen muchos tipos de eventos diferentes, incluyendo eventos del ratón, eventos de teclado, eventos de carga y descarga, eventos de formulario, eventos de ventana, entre otros.</p>
+        <p>Fuente: <a href="https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/Events">Mozilla Developer Network</a></p>
+
+        <h4>¿Qué es un listener?</h4>
+        <p>En programación web, un listener (o "escuchador" en español) es una función que se encarga de "escuchar" un evento específico en un elemento de una página web y ejecutar cierto código cuando ese evento ocurre.</p>
+        <p>Los listeners se pueden añadir a los elementos del DOM utilizando el método <code>addEventListener()</code> en JavaScript. Por ejemplo, para añadir un listener que se ejecute cuando se hace clic en un botón:</p>
+        <pre><code>let boton = document.getElementById("mi-boton");
+        boton.addEventListener("click", function() {
+        console.log("Se ha hecho clic en el botón.");
+        });
+        </code></pre>
+        <p>En este caso, la función que se pasa como segundo parámetro al método <code>addEventListener()</code> es el listener. Cuando se hace clic en el botón, se ejecuta la función, que en este caso sólo muestra un mensaje en la consola del navegador.</p>
+        <p>Fuente: <a href="https://developer.mozilla.org/es/docs/Web/API/EventTarget/addEventListener">Mozilla Developer Network</a></p>
+
+        <h4>¿Qué es un callback?</h4>
+        <p>En programación, un callback es una función que se pasa como argumento a otra función para que sea ejecutada después de que ésta termine su tarea. El callback se utiliza para manejar los resultados de la tarea asíncrona.</p>
+        <p>En JavaScript, los callbacks son ampliamente utilizados para manejar tareas asíncronas, como solicitudes a servidores web o animaciones. Por ejemplo, para realizar una solicitud AJAX con jQuery:</p>
+        <pre><code>$.ajax({
+        url: "miarchivo.txt",
+        success: function(data) {
+            console.log("La solicitud ha sido completada.");
+            console.log(data);
+        }
+        });
+        </code></pre>
+        <p>En este caso, la función que se pasa como valor del parámetro "success" es el callback. Cuando la solicitud AJAX se completa satisfactoriamente, se ejecuta la función, que en este caso sólo muestra un mensaje en la consola y el contenido del archivo "miarchivo.txt".</p>
+        <p>Fuente: <a href="https://developer.mozilla.org/es/docs/Glossary/Callback_function">Mozilla Developer Network</a></p>
+
+        <h4>¿Qué es un objeto de evento?</h4>
+        <p>En programación web, un "objeto de evento" es un elemento que contiene información sobre un suceso que ha ocurrido dentro del DOM, como un clic de ratón o una pulsación de tecla. El objeto de evento se crea automáticamente por el navegador y se pasa como argumento a cualquier listener o función que se haya registrado para manejar el evento.</p>
+        <p>Asimismo, tiene propiedades que describen el tipo de evento, el elemento del DOM en el que ocurrió, las coordenadas del ratón en el momento del evento, entre otras. También puede tener métodos que permiten detener la propagación del evento o prevenir su comportamiento predeterminado.</p>
+        <p>En JavaScript, se puede acceder al objeto de evento dentro de un listener o función utilizando el parámetro "event". Por ejemplo, para mostrar un mensaje que incluya las coordenadas del ratón cuando se hace clic en un botón:</p>
+        <pre><code>let boton = document.getElementById("mi-boton");
+        boton.addEventListener("click", function(event) {
+        console.log("Se ha hecho clic en el botón en la posición (" + event.clientX + ", " + event.clientY + ").");
+        });
+        </code></pre>
+        <p>En este caso, el objeto de evento se utiliza para acceder a las propiedades "clientX" y "clientY", que contienen las coordenadas del ratón en el momento del clic.</p>
+        <p>Fuente: <a href="https://developer.mozilla.org/es/docs/Web/API/Event">Mozilla Developer Network</a></p>
+
+    </div>
+
+    <div>
+        <h3>Ejercicios de código</h3>
+        <h4>Ejercicio 1</h4>
+        <p>Modifica el siguiente elemento para mostrar la posición del mouse en el documento: </p>
+        <!-- Creamos un elemento en el HTML que mostrará la posición del mouse -->
+	    <div id="posicion-mouse">Posición del mouse:</div>
+
+        <h4>Ejercicio 2</h4>
+        <p>Al dar click al siguiente botón, obtén el nombre y apellido de las siguientes cajas de texto, y agrega, después del botón, un elemento que tenga el nombre completo.</p>
+        <!-- Creamos dos cajas de texto para ingresar el nombre y apellido -->
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre">
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido">
+        <!-- Creamos un botón para obtener el nombre completo -->
+	    <button id="btn-nombre-completo">Obtener nombre completo</button>
+
+        <h4>Ejercicio 3</h4>
+        <p>Agrega el código para agregar una fila, o una columna, a la siguiente tabla al dar click al botón correspondiente.</p>
+        <!-- Creamos una tabla -->
+        <table id="myTable" border="1">
+            <tr>
+              <td>Fila 1, Columna 1</td>
+              <td>Fila 1, Columna 2</td>
+              <td>Fila 1, Columna 3</td>
+            </tr>
+            <tr>
+              <td>Fila 2, Columna 1</td>
+              <td>Fila 2, Columna 2</td>
+              <td>Fila 2, Columna 3</td>
+            </tr>
+          </table>
+          <button id="addRowBtn">Agregar fila</button>
+          <button id="addColBtn">Agregar columna</button>
+
+        <h4>Ejercicio 4</h4>
+        <p> Incluye dos cajas de input, para solicitar al usuario la posición de la fila y columna de la siguiente tabla, y otra para solicitar un texto. Al apretar el botón, actualiza el contenido de esa tabla en la posición que solicitaste, con la cadena de texto que solicitaste.</p>
+        <!-- Creamos las cajas de input para la posición y el texto -->
+        <label for="fila">Fila:</label>
+        <input type="number" id="fila">
+
+        <label for="columna">Columna:</label>
+        <input type="number" id="columna">
+
+        <label for="texto">Texto:</label>
+        <input type="text" id="texto">
+
+        <!-- Creamos la tabla -->
+        <table id="tabla">
+            <tr>
+            <td>1-1</td>
+            <td>1-2</td>
+            <td>1-3</td>
+            </tr>
+            <tr>
+            <td>2-1</td>
+            <td>2-2</td>
+            <td>2-3</td>
+            </tr>
+            <tr>
+            <td>3-1</td>
+            <td>3-2</td>
+            <td>3-3</td>
+            </tr>
+        </table>
+        
+        <!-- Creamos el botón para actualizar la tabla -->
+        <button onclick="actualizarTabla()">Actualizar tabla</button>
+
+
+
+        <h4>Ejercicio 5</h4>
+        <p>Da una lista de colores y agrega el código para quitar o agregar elementos a la lista de opciones con el botón correspondiente. Los colores pueden ser aleatorios.</p>
+        <h1>Lista de colores</h1>
+        <p>Selecciona los colores que más te gusten:</p>
+        <ul id="lista-colores">
+            <li>Rojo</li>
+            <li>Verde</li>
+            <li>Azul</li>
+        </ul>
+        <button id="agregar-color">Agregar color</button>
+        <button id="quitar-color">Quitar color</button>
+
+        
+
+
+        <h4>Ejercicio 6</h4>
+        <p></p>
+        <img src="../../images/300.jpg" alt="Imagen Placeholder" id="imagen">
+    </div>
+
+    <div>
+        <h1>Conclusiones</h1>
+        <h2>Experiencia general</h2>
+        <p>Se trató de una actividad interesante en la que pude descubrir un nuevo método de 
+            aprendizaje, así como una manera eficiente de consultar información como ayuda para mis 
+            trabajos y tareas. 
+        </p>
+
+        <h2>¿Cuándo y para qué usarías ChatGPT y cuándo Copilot?</h2>
+        <p>El uso de ChatGPT sirve para consultar errores dentro de los códigos, así como entender su 
+            funcionamiento y, si es necesario, debuggear el código. Por otro lado, Copilot sirve para el 
+            mismo principio, además de poder hacer consultas / preguntas para resolver ciertas imprecisiones
+            dentro de los trabajos.
+        </p>
+
+        <h2>Ventajas de usar AI para programar</h2>
+        <p>Ayudan a resolver los códigos, explicar el comportamiento de este, formarlo paso a paso, así como
+            trabajar de manera eficiente y sencilla.
+        </p>
+
+        <h2>Desventajas de usar AI para programar</h2>
+        <p>No se aprende demasiado si no se le presta atención a los pasos generados, se evita todo 
+            esfuerzo de comprensión y se copian y pegan los trabajos sin más. 
+        </p>
+    </div>
+
+</body>
+</html>
