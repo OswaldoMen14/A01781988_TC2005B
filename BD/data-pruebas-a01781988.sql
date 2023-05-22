@@ -111,3 +111,65 @@ WHERE d.matricula NOT IN (
   FROM CLASIFICACION c
   WHERE c.deportista = d.matricula AND c.rango <> 1
 );
+
+-- Séptima consulta - Nombre de la competencia que aporta el máximo de puntos: 
+-- Investigando un poco, se puede utilizar HAVING para comparar las competencias que aportan el máximo número de puntos 
+-- al máximo encontrado. 
+-- NOTA: se habla de puntos, pero, debido a la ambiguedad de la situación, contamos el número máximo de medallas que aportan
+-- las disciplinas. 
+SELECT pr.identificador
+FROM PRUEBA1 pr
+JOIN CLASIFICACION cl ON pr.identificador = cl.prueba
+GROUP BY pr.identificador
+HAVING SUM(cl.rango) = (
+  SELECT MAX(puntos_totales)
+  FROM (
+    SELECT pr.identificador, SUM(cl.rango) AS puntos_totales
+    FROM PRUEBA1 pr
+    JOIN CLASIFICACION cl ON pr.identificador = cl.prueba
+    GROUP BY pr.identificador
+  ) AS puntos_maximos
+);
+
+-- Octava consulta - Países (nacionalidades) que participaron en todas las competencias: 
+SELECT d.pais
+FROM DEPORTISTA d
+GROUP BY d.pais
+HAVING COUNT(DISTINCT d.matricula) = (
+  SELECT COUNT(DISTINCT pr.identificador)
+  FROM PRUEBA1 pr
+);
+
+-- Novena consulta - Propongan una consulta que involucre una sola tabla con  alguna funcion como MIN, AVG: 
+-- Calcular el rango mínimo dentro de la tabla CLASIFICACION: 
+SELECT MIN(c.rango) AS minimo_rango
+FROM CLASIFICACION c;
+-- Es decir, alguien obtuvo el primer lugar dentro de la clasificación, siendo este el valor "mínimo" que se podía 
+-- obtener
+
+-- Décima consulta - Propongan una consulta que involucre dos tabla con GROUP BY:
+-- Contar el número de participantes que hay por país, se usa GROUP BY para agrupar los datos por el nombre del país:
+SELECT p.nombre AS pais, COUNT(d.matricula) AS total_deportistas
+FROM PAIS p
+JOIN DEPORTISTA d ON p.nombre = d.pais
+GROUP BY p.nombre;
+
+-- Onceava consulta - Propongan una consulta que involucre tres tablas con las sentencias LEFT JOIN, ORDER BY, GROUP BY Y LIMIT:
+-- consultamos el número total de clasificaciones que tuvo cierto participante y su nacionalidad, limitandolo a 10 filas
+SELECT d.nombre, p.nombre AS pais, COUNT(c.deportista) AS total_clasificaciones
+FROM DEPORTISTA d
+LEFT JOIN CLASIFICACION c ON d.matricula = c.deportista
+LEFT JOIN PAIS p ON d.pais = p.nombre
+GROUP BY d.nombre, p.nombre
+ORDER BY total_clasificaciones DESC
+LIMIT 10;
+
+-- Doceava consulta - 
+
+
+
+
+
+
+
+
